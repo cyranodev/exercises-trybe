@@ -45,5 +45,5 @@ switch (true) {
 }
 console.log('taxa do IR:',taxIR);
 let salarioLiq = salarioBase - taxIR;
-let salarioLiqArred = parseFloat(salarioLiq.toFixed(2));
+let salarioLiqArred = salarioLiq.toFixed(2);
 console.log('salário líquido:',salarioLiqArred);
