@@ -1,36 +1,36 @@
 // exercicio 1 - 4_1
-function ex01a (a, b) {
+function ex01a(a, b) {
   console.log('O resultado da adição é',a + b);
 }
 
 // exercicio 2 - 4_1
-function ex01b (a, b) {
+function ex01b(a, b) {
   console.log('O resultado da subtração é',a - b);
 }
 
 // exercicio 3 - 4_1
-function ex01c (a, b) {
+function ex01c(a, b) {
   console.log('O resultado da multiplicação é',a * b);
 }
 
 // exercicio 4 - 4_1
-function ex01d (a, b) {
+function ex01d(a, b) {
   console.log('O resultado da divisão é',a / b);
 }
 
 // exercicio 5 - 4_1
-function ex01e (a, b) {
+function ex01e(a, b) {
   console.log('O resultado do módulo de a/b é',a % b);
 }
 
 // exercicio 2 - 4_1
-function ex02 (a, b) {
+function ex02(a, b) {
   let msg = 'o maior número é:';
   let maiorNum = (a > b) ? console.log(msg,a) : console.log(msg,b);
 }
 
 // exercicio 3 - 4_1
-function ex03 (a, b, c) {
+function ex03(a, b, c) {
   let msg = 'o maior número é:';
   let maiorNum = (a > b && a > c) ?
     console.log(msg,a) :
@@ -40,7 +40,7 @@ function ex03 (a, b, c) {
 }
 
 // exercicio 4 - 4_1
-function ex04 (num) {
+function ex04(num) {
   let sinalDoNum = (num > 0) ?
     console.log(num,'is positive.') :
     (num < 0) ?
@@ -49,13 +49,13 @@ function ex04 (num) {
 }
 
 // exercicio 5 - 4_1
-function ex05 (ang1, ang2, ang3) {
+function ex05(ang1, ang2, ang3) {
   let angTriangle = ((ang1 + ang2 + ang3) === 180) ? true : false;
   console.log(angTriangle);
 }
 
 // exercicio 6 - 4_1
-function ex06 (chessPiece) {
+function ex06(chessPiece) {
   if (typeof chessPiece === 'string') {
     let pecaLowerCase = chessPiece.toLowerCase();
     switch (pecaLowerCase) {
@@ -87,7 +87,7 @@ function ex06 (chessPiece) {
 }
 
 // exercicio 7 - 4_1
-function ex07 (nPercent) {
+function ex07(nPercent) {
   if (nPercent >= 0 && nPercent <= 100) {
     let grade;
     if (nPercent < 50) {
@@ -112,7 +112,7 @@ function ex07 (nPercent) {
 }
 
 // exercicio 8 - 4_1
-function ex08 (num1, num2, num3) {
+function ex08(num1, num2, num3) {
   let result = false;
   if (num1 % 2 == 0 || num2 % 2 == 0 || num3 % 2 == 0) {
     result = true;
@@ -123,7 +123,7 @@ function ex08 (num1, num2, num3) {
 }
 
 // exercicio 9 - 4_1
-function ex09 (num1, num2, num3) {
+function ex09(num1, num2, num3) {
   let result = false;
   if (num1 % 3 == 0 || num2 % 3 == 0 || num3 % 3 == 0) {
     let result = true;
@@ -134,7 +134,7 @@ function ex09 (num1, num2, num3) {
 }
 
 // exercicio 10 - 4_1
-function ex10 (pCost, pPrice) {
+function ex10(pCost, pPrice) {
   if (pCost > 0 || pPrice > 0) {
     let profit = (pPrice - (pCost * 1.2)) * 1000;
     console.log('O lucro da empresa com a venda de mil produtos será de', profit, '.');
@@ -144,7 +144,7 @@ function ex10 (pCost, pPrice) {
 }
 
 // exercicio 11 - 4_1
-function ex11 (salarioBruto) {
+function ex11(salarioBruto) {
   let taxINSS = 0;
 
   switch (true) {
