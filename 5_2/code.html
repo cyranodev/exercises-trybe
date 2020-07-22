@@ -134,6 +134,13 @@
         li.innerHTML = text;
         document.querySelector('div.right-content ul').appendChild(li);
       }
+
+      //exercício 9
+      for (let index = 1; index <= 3; index += 1) {
+        const divH3 = document.createElement('h3');
+        divH3.innerHTML = 'H3 ' + index;
+        document.querySelector('div.main-content').appendChild(divH3);
+      }
     </script>
   </body>
 </html>
