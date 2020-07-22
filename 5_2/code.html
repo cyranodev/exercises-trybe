@@ -162,6 +162,12 @@
 
       //exercício 5
       document.querySelector('div.center-content').parentElement.style.backgroundColor = 'green';
+
+      //exercício 6
+      const arrayUlList = document.querySelectorAll('div.right-content ul li');
+      for (i = arrayUlList.length - 1; i > 7; i -= 1) {
+        document.querySelector('div.right-content ul').removeChild(arrayUlList[i]);
+      }
     </script>
   </body>
 </html>
