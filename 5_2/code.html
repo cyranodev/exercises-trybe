@@ -93,6 +93,47 @@
       img.src = 'https://picsum.photos/200';
       img.className = 'small-image';
       document.querySelector('div.left-content').appendChild(img);
+
+      //exercício 8
+      let ul = document.createElement('ul');
+      document.querySelector('div.right-content').appendChild(ul);
+      let text = '';
+      for (let i = 0; i < 10; i += 1) {
+        switch (i) {
+          case 0:
+            text = 'um';
+            break;
+          case 1:
+            text = 'dois';
+            break;
+          case 2:
+            text = 'três';
+            break;
+          case 3:
+            text = 'quatro';
+            break;
+          case 4:
+            text = 'cinco';
+            break;
+          case 5:
+            text = 'seis';
+            break;
+          case 6:
+            text = 'sete';
+            break;
+          case 7:
+            text = 'oito';
+            break;
+          case 8:
+            text = 'nove';
+            break;
+          case 9:
+            text = 'dez';
+        }
+        let li = document.createElement('li');
+        li.innerHTML = text;
+        document.querySelector('div.right-content ul').appendChild(li);
+      }
     </script>
   </body>
 </html>
