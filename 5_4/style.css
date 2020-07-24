@@ -1,0 +1,64 @@
+body {
+  font-size: 18px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 10px 20px 0;
+}
+
+header div {
+  display: inline-block;
+  background-color: rgba(175, 175, 175, 60%);
+  padding: 4px 16px;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+#preferences {
+  margin: 15px auto 20px;
+  border: 1px black;
+  width: 85%;
+  text-align: center;
+}
+
+.dark-theme {
+  background-color: rgb(35, 35, 35);
+  color: whitesmoke;
+}
+
+.light-theme {
+  background-color: whitesmoke;
+  color: rgb(15, 15, 15);
+}
+
+.fontSans {
+  font-family: 'Roboto', sans-serif;
+}
+
+.fontSerif {
+  font-family: 'Lora', serif;
+}
+
+.pref {
+  font-weight: bold;
+}
+
+#preferences label {
+  font-size: 0.9em;
+}
+
+main {
+  padding: 10px 10vw;
+  margin: auto;
+  line-height: 1.3em;
+}
+
+.extralinespace {
+  line-height: 1.5em;
+}
+
+.extramargin {
+  padding: 10px 20vw;
+}
+

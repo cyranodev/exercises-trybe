@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio Trybe - dia 5_4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+<body class="fontSerif light-theme">
+  <header>
+    <h1>Leitor online</h1>
+    <h2>selecione suas preferências</h2>
+    <section id='preferences'>
+      <div>
+        <span class="pref">Fonte:</span>
+        <input type="radio" name="font" value="font1" checked>
+        <label>Serif</label>
+        <input type="radio" name="font" value="font2">
+        <label>Sans-serif</label>
+      </div>
+      <div>
+        <span class="pref">Tema:</span>
+        <input type="radio" name="theme" value="theme1" checked>
+        <label>Tema claro</label>
+        <input type="radio" name="theme" value="theme2">
+        <label>Tema escuro</label>
+      </div>
+      <div>
+        <span class="pref">Espaço entre linhas:</span>
+        <input type="radio" name="linespace" value="linespace1" checked>
+        <label>Regular</label>
+        <input type="radio" name="linespace" value="linespace2">
+        <label>Confortável</label>
+      </div>
+      <div>
+        <span class="pref">Margens:</span>
+        <input type="radio" name="textmargin" value="margin1" checked>
+        <label>Regular</label>
+        <input type="radio" name="textmargin" value="margin2">
+        <label>Confortável</label>
+      </div>
+    </section>
+  </header>
+  <main>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod lacus eu libero congue, pharetra iaculis ligula pretium. Quisque at ex nunc. Praesent vel placerat est. Sed dapibus nunc a ipsum sagittis mollis. Donec sollicitudin commodo turpis, ac aliquam elit tincidunt in. Aliquam vel purus eget nunc malesuada ornare. Nullam ullamcorper tortor tempus, tempus eros vitae, rhoncus ligula. Proin dignissim, orci eget accumsan pretium, justo ligula pulvinar purus, sed pulvinar sem risus vitae purus.
+    <br><br>
+    Etiam porttitor, massa non mattis scelerisque, risus enim dictum sapien, a feugiat dolor enim sit amet sapien. Fusce ultrices tristique ligula et molestie. Integer quis hendrerit tellus. Morbi mollis eros quam, et vestibulum urna faucibus et. Phasellus placerat auctor purus sagittis commodo. Sed tempor enim faucibus, euismod enim in, semper ligula. Integer sit amet ante non ligula laoreet maximus. Nullam porttitor scelerisque metus, imperdiet placerat sem faucibus nec. Morbi nibh magna, ullamcorper et maximus ut, suscipit a ex. Fusce id consequat enim. Fusce id faucibus odio, nec convallis mauris. Ut laoreet dui vel commodo volutpat. Praesent eget odio in tortor lobortis volutpat. Aliquam sodales consectetur dui ullamcorper vestibulum. Proin et mollis tellus, bibendum venenatis felis.
+    <br><br>
+    Quisque accumsan tellus ut semper mattis. Sed sit amet nulla lacus. In ex leo, tempor quis risus a, volutpat faucibus felis. Suspendisse suscipit sapien ut nisi sodales, id eleifend dolor lacinia. Sed laoreet augue convallis, lobortis est sit amet, vulputate est. Nunc condimentum diam ipsum, at lacinia urna fermentum in. Donec suscipit varius tellus, id condimentum est posuere vel. Proin ut felis risus.
+    <br><br>
+    Nullam ultricies risus lacus. Suspendisse non lectus maximus dui commodo feugiat. Aliquam suscipit, massa vel mollis tincidunt, lacus magna auctor dolor, sit amet porttitor libero diam vel mi. Aenean et mi cursus, lobortis dolor varius, euismod mauris. In vitae turpis nisi. Quisque vel elementum tortor, a blandit magna. Etiam imperdiet suscipit sapien, nec blandit dolor.
+    <br><br>
+    Duis ut ligula a felis luctus bibendum. Cras eu laoreet lectus. Nunc mattis, metus in viverra vehicula, est tellus viverra augue, a tempor purus lorem in mi. Phasellus in tincidunt augue, a laoreet nisi. Pellentesque sit amet nisl imperdiet, feugiat diam vitae, rhoncus dui. Nulla facilisi. Pellentesque consequat accumsan risus, quis laoreet ante pellentesque vel. Mauris id ornare ligula. Quisque vitae condimentum diam. Etiam tincidunt laoreet mauris, eget facilisis justo viverra ac. Donec id nibh neque. Ut vel auctor lectus. Praesent odio urna, commodo a sapien a, sollicitudin cursus urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec orci nisl, blandit vel fermentum vel, placerat eget sapien. Integer dictum lectus in nisi accumsan vehicula.
+  </main>
+
+  <script>
+    var fontFamilyCheck = document.querySelectorAll('input[name="font"]');
+    var fontFamily = document.querySelector('input[name=font]:checked').value;
+    var themeCheck = document.querySelectorAll('input[name="theme"]');
+    var theme = document.querySelector('input[name=theme]:checked').value;
+    var linespaceCheck = document.querySelectorAll('input[name="linespace"]');
+    var lineSpace = document.querySelector('input[name=linespace]:checked').value;
+    var marginCheck = document.querySelectorAll('input[name="textmargin"]');
+    var margins = document.querySelector('input[name=textmargin]:checked').value;
+
+    if (document.querySelector('input[name="font"]')) {
+      fontFamilyCheck.forEach((elem) => {
+        elem.addEventListener('change', (event) => {
+          fontFamily = event.target.value;
+          fontChanger(fontFamily);
+        });
+      });
+    }
+
+    if (document.querySelector('input[name="theme"]')) {
+      themeCheck.forEach((elem) => {
+        elem.addEventListener('change', (event) => {
+          theme = event.target.value;
+          themeChanger(theme);
+        });
+      });
+    }
+
+    if (document.querySelector('input[name="linespace"]')) {
+      linespaceCheck.forEach((elem) => {
+        elem.addEventListener('change', (event) => {
+          lineSpace = event.target.value;
+          lineChanger(lineSpace);
+        });
+      });
+    }
+
+    if (document.querySelector('input[name="textmargin"]')) {
+      marginCheck.forEach((elem) => {
+        elem.addEventListener('change', (event) => {
+          margins = event.target.value;
+          marginChanger(margins);
+        });
+      });
+    }
+
+    function fontChanger(fontFamily) {
+      if(fontFamily === 'font1') {
+        document.body.classList.add('fontSerif');
+        document.body.classList.remove('fontSans');
+      } else if(fontFamily === 'font2') {
+        document.body.classList.add('fontSans');
+        document.body.classList.remove('fontSerif');
+      }
+    }
+
+    function themeChanger(theme) {
+      if(theme === 'theme1') {
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+      } else if (theme === 'theme2') {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+      }
+    }
+
+    function lineChanger(lineSpace) {
+      if(lineSpace === 'linespace1') {
+        document.querySelector('main').classList.remove('extralinespace');
+      } else if(lineSpace === 'linespace2') {
+        document.querySelector('main').classList.add('extralinespace');
+      }
+    }
+
+    function marginChanger(margins) {
+      if(margins === 'margin1') {
+        document.querySelector('main').classList.remove('extramargin');
+      } else if(margins === 'margin2') {
+        document.querySelector('main').classList.add('extramargin');
+      }
+    }
+  </script>
+</body>
+</html>
