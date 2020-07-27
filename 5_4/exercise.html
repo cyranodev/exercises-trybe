@@ -6,7 +6,6 @@
   <title>Exercicio Trybe - dia 5_4</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="script.js"></script>
 </head>
 <body class="fontSerif light-theme">
   <header>
@@ -15,30 +14,30 @@
     <section id='preferences'>
       <div>
         <span class="pref">Fonte:</span>
-        <input type="radio" name="font" value="font1" checked>
+        <input type="radio" name="font" value="font1" id="font-serif">
         <label>Serif</label>
-        <input type="radio" name="font" value="font2">
+        <input type="radio" name="font" value="font2" id="font-sans">
         <label>Sans-serif</label>
       </div>
       <div>
         <span class="pref">Tema:</span>
-        <input type="radio" name="theme" value="theme1" checked>
+        <input type="radio" name="theme" value="theme1" id="theme-light">
         <label>Tema claro</label>
-        <input type="radio" name="theme" value="theme2">
+        <input type="radio" name="theme" value="theme2" id="theme-dark">
         <label>Tema escuro</label>
       </div>
       <div>
         <span class="pref">Espaço entre linhas:</span>
-        <input type="radio" name="linespace" value="linespace1" checked>
+        <input type="radio" name="linespace" value="linespace1" id="std-linespace">
         <label>Regular</label>
-        <input type="radio" name="linespace" value="linespace2">
+        <input type="radio" name="linespace" value="linespace2" id="morelinespace">
         <label>Confortável</label>
       </div>
       <div>
         <span class="pref">Margens:</span>
-        <input type="radio" name="textmargin" value="margin1" checked>
+        <input type="radio" name="textmargin" value="margin1" id="std-margin">
         <label>Regular</label>
-        <input type="radio" name="textmargin" value="margin2">
+        <input type="radio" name="textmargin" value="margin2" id="moremargin">
         <label>Confortável</label>
       </div>
     </section>
@@ -57,14 +56,64 @@
 
   <script>
     var fontFamilyCheck = document.querySelectorAll('input[name="font"]');
-    var fontFamily = document.querySelector('input[name=font]:checked').value;
-    var themeCheck = document.querySelectorAll('input[name="theme"]');
-    var theme = document.querySelector('input[name=theme]:checked').value;
-    var linespaceCheck = document.querySelectorAll('input[name="linespace"]');
-    var lineSpace = document.querySelector('input[name=linespace]:checked').value;
-    var marginCheck = document.querySelectorAll('input[name="textmargin"]');
-    var margins = document.querySelector('input[name=textmargin]:checked').value;
+    var fontSansBtn = document.querySelector('#font-sans');
+    var fontSerifBtn = document.querySelector('#font-serif');
 
+    var themeCheck = document.querySelectorAll('input[name="theme"]');
+    var themeDarkBtn = document.querySelector('#theme-dark');
+    var themeLightBtn = document.querySelector('#theme-light');
+
+    var linespaceCheck = document.querySelectorAll('input[name="linespace"]');
+    var moreLineBtn = document.querySelector('#morelinespace');
+    var stdLineBtn = document.querySelector('#std-linespace');
+
+    var marginCheck = document.querySelectorAll('input[name="textmargin"]');
+    var moreMarginBtn = document.querySelector('#moremargin');
+    var stdMarginBtn = document.querySelector('#std-margin');
+
+    // load setup checks
+    if (localStorage.fontFamily === 'font2') {
+      fontSansBtn.checked = true;
+      } else {
+        localStorage.fontFamily = 'font1';
+        fontSerifBtn.checked = true;
+      }
+
+    var fontFamily = document.querySelector('input[name=font]:checked').value;
+    fontChanger(fontFamily);
+
+    if (localStorage.theme === 'theme2') {
+      themeDarkBtn.checked = true;
+      } else {
+        localStorage.theme = 'theme1';
+        themeLightBtn.checked = true;
+      }
+
+    var theme = document.querySelector('input[name=theme]:checked').value;
+    themeChanger(theme);
+
+    if (localStorage.linespace === 'comfort') {
+      moreLineBtn.checked = true;
+      } else {
+        localStorage.linespace = 'std';
+        stdLineBtn.checked = true;
+      }
+
+    var lineSpace = document.querySelector('input[name=linespace]:checked').value;
+    lineChanger(lineSpace);
+
+    if (localStorage.margins === 'more') {
+      moreMarginBtn.checked = true;
+      } else {
+        localStorage.margins = 'std';
+        stdMarginBtn.checked = true;
+      }
+
+      var margins = document.querySelector('input[name=textmargin]:checked').value;
+      marginChanger(margins);
+
+
+    // button change listeners
     if (document.querySelector('input[name="font"]')) {
       fontFamilyCheck.forEach((elem) => {
         elem.addEventListener('change', (event) => {
@@ -105,9 +154,11 @@
       if(fontFamily === 'font1') {
         document.body.classList.add('fontSerif');
         document.body.classList.remove('fontSans');
+        localStorage.fontFamily = 'font1';
       } else if(fontFamily === 'font2') {
         document.body.classList.add('fontSans');
         document.body.classList.remove('fontSerif');
+        localStorage.fontFamily = 'font2';
       }
     }
 
@@ -115,27 +166,35 @@
       if(theme === 'theme1') {
         document.body.classList.add('light-theme');
         document.body.classList.remove('dark-theme');
+        localStorage.theme = 'theme1';
       } else if (theme === 'theme2') {
         document.body.classList.add('dark-theme');
         document.body.classList.remove('light-theme');
+        localStorage.theme = 'theme2';
       }
     }
 
     function lineChanger(lineSpace) {
       if(lineSpace === 'linespace1') {
         document.querySelector('main').classList.remove('extralinespace');
+        localStorage.linespace = 'std';
       } else if(lineSpace === 'linespace2') {
         document.querySelector('main').classList.add('extralinespace');
+        localStorage.linespace = 'comfort';
       }
     }
 
     function marginChanger(margins) {
       if(margins === 'margin1') {
         document.querySelector('main').classList.remove('extramargin');
+        localStorage.margins = 'std';
       } else if(margins === 'margin2') {
         document.querySelector('main').classList.add('extramargin');
+        localStorage.margins = 'more';
       }
     }
+
+
   </script>
 </body>
 </html>
