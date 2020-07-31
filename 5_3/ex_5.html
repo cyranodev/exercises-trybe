@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Cat Walk</title>
+ </head>
+ <body>
+  
+  <img style="position:absolute;" src="http://www.anniemation.com/clip_art/images/cat-walk.gif">
+  
+  <script>
+    let img = document.querySelector('img');
+    img.style.marginLeft = '0px';
+    img.style.marginTop = '20px';
+    img.src = 'http://www.anniemation.com/clip_art/images/cat-walk.gif';
+    let catWalking = true;
+    let imgMargin = parseInt(img.style.marginLeft);
+    
+    function catWalk() {
+      imgMargin = parseInt(img.style.marginLeft);
+      if (imgMargin > (window.innerWidth + 15)) {
+          img.style.marginLeft = '-200px';
+          img.style.marginTop = '20px';
+      } else if(imgMargin === (parseInt((window.innerWidth - img.width) / 2 ))) {
+        catWalking = false;
+        changeCat();
+        } else if(catWalking) {
+          img.style.marginLeft = (imgMargin + 10) + 'px';
+          img.style.marginTop = (parseInt(img.style.marginTop) + 1) + 'px';
+        }
+    }
+
+    function changeCat () {
+      img.src = 'https://media1.tenor.com/images/44b231b2f7b592dfb8d5f30c57060958/tenor.gif';
+      setTimeout( () => {
+          img.src = 'http://www.anniemation.com/clip_art/images/cat-walk.gif';
+          img.style.marginLeft = (imgMargin + 10) + 'px';
+          img.style.marginTop = (parseInt(img.style.marginTop) + 1) + 'px';  
+          catWalking = true;
+        }, 3000);
+        catWalking = false;
+    }
+    
+    if (catWalking) {
+      window.setInterval(catWalk, 50);
+    }
+
+  </script>
+ </body>
+</html>
