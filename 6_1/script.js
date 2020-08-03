@@ -29,6 +29,7 @@ let estados = {
 };
 
 let selectEstado = document.querySelector('#estado');
+let emailValido = false;
 
 for (const property in estados) {
   let option = document.createElement('option');
@@ -40,9 +41,45 @@ for (const property in estados) {
 
 function checkMail(event) {
   const emailText = event.target.value;
-  const regEx = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, 'i');
-  console.log(regEx.test(emailText));
+  const regEx = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, 'i');
+  if (!regEx.test(emailText)) {
+    alert('email inválido!');
+    emailValido = false;
+  }
+  emailValido = true;
 }
 
-let emailInput = document.querySelector('#email');
-emailInput.addEventListener('keyup', checkMail);
+const emailInput = document.querySelector('#email');
+emailInput.addEventListener('change', checkMail);
+
+const dataAtual = new Date();
+const ano = dataAtual.getFullYear();
+const mes = dataAtual.getMonth() + 1;
+const dia = dataAtual.getDate();
+const dataInicio = document.querySelector('#data-inicio');
+let dataTeste = '';
+let dataTesteNumber = [];
+let dataValida = false;
+
+function validarData() {
+  dataTeste = document.querySelector('#data-inicio').value.split('-');
+  for (i = 0; i < dataTeste.length; i += 1) {
+    dataTesteNumber[i] = parseInt(dataTeste[i]);
+  }
+  if (dataTesteNumber[0] > 0 && dataTesteNumber[0] < ano) {
+    if (dataTesteNumber[1] > 0 && dataTesteNumber[1] <= 12) {
+      if (dataTesteNumber[2] > 0 && dataTesteNumber[2] <= 31) {
+        dataValida = true;
+      }
+    }
+  } else if (dataTesteNumber[0] === ano && dataTesteNumber[1] < mes && dataTesteNumber[2] <= 31) {
+    dataValida = true;
+  } else if (dataTesteNumber[0] === ano && dataTesteNumber[1] === mes && dataTesteNumber[2] <= dia) {
+    dataValida = true;
+  } else {
+    dataValida = false;
+  }
+}
+
+dataInicio.addEventListener('change',validarData);
+

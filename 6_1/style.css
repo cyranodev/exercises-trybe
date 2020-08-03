@@ -1,0 +1,58 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+#cv-form {
+  margin: 0 auto;
+  width: 70%;
+}
+
+#cv-form label {
+  display: block;
+  font-weight: 700;
+  margin: 0  4px 0 23px;
+}
+
+#cv-form fieldset {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 20px 30px;
+}
+
+#cv-form input, #cv-form select {
+  background-color: rgb(220, 220, 230);
+  border: 0;
+  border-radius: 8px;
+  display: block;
+  margin: 4px auto 16px;
+  padding: 8px 12px;
+}
+
+#cv-form input[ type='radio' ] {
+  display: inline;
+  margin: 8px 4px 4px 26px;
+}
+
+#cv-form .radio-label {
+  display: inline-block;
+  font-weight: 500;
+  margin: 0 0 0 3px;
+}
+
+#cv-form input:focus, #cv-form select:focus {
+  background-color: rgb(180, 190, 210);
+  outline: none;
+}
+
+#cv-form input:not([ type='radio' ]) {
+  width: 90%;
+}
+
+#cv-form fieldset legend {
+  color: rgb(106, 106, 110);
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  padding: 0 12px 2px;
+  text-transform: uppercase;
+}
