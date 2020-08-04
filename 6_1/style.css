@@ -1,4 +1,5 @@
 html {
+  background-color: rgb(242, 242, 247);
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
@@ -17,16 +18,24 @@ html {
 #cv-form fieldset {
   border: 1px solid grey;
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 30px 30px;
+  margin: 0 0 30px 0;
 }
 
-#cv-form input, #cv-form select {
+#cv-form input, #cv-form select, #cv-form textarea {
   background-color: rgb(220, 220, 230);
   border: 0;
   border-radius: 8px;
   display: block;
-  margin: 4px auto 16px;
   padding: 8px 12px;
+}
+
+#cv-form input {
+  margin: 4px auto 16px;
+}
+
+#cv-form select {
+  margin: 4px 0 16px 16px;
 }
 
 #cv-form input[ type='radio' ] {
@@ -55,4 +64,13 @@ html {
   letter-spacing: 2px;
   padding: 0 12px 2px;
   text-transform: uppercase;
+}
+
+#cv-form textarea {
+  margin: 4px 0 16px 21px;
+}
+
+#cv-form textarea:focus {
+  background-color: rgb(180, 190, 210);
+  outline: none;
 }
