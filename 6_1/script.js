@@ -40,13 +40,16 @@ for (const property in estados) {
 }
 
 function checkMail(event) {
-  const emailText = event.target.value;
-  const regEx = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, 'i');
-  if (!regEx.test(emailText)) {
-    alert('email inválido!');
-    emailValido = false;
+  if (event.target.value !== null) {
+    const emailText = event.target.value;
+    const regEx = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/, 'i');
+    if (!regEx.test(emailText)) {
+      alert('email inválido!');
+      emailValido = false;
+    } else {
+      emailValido = true;
+    }
   }
-  emailValido = true;
 }
 
 const emailInput = document.querySelector('#email');
@@ -61,7 +64,7 @@ let dataTeste = '';
 let dataTesteNumber = [];
 let dataValida = false;
 
-function validarData() {
+function checkDate() {
   dataTeste = document.querySelector('#data-inicio').value.split('-');
   for (i = 0; i < dataTeste.length; i += 1) {
     dataTesteNumber[i] = parseInt(dataTeste[i]);
@@ -81,5 +84,29 @@ function validarData() {
   }
 }
 
-dataInicio.addEventListener('change',validarData);
+dataInicio.addEventListener('change',checkDate);
+
+function criarDiv() {
+  // Criar DIV
+  const elementoDiv = document.createElement('div');
+  document.body.appendChild(elementoDiv);
+  const form = document.querySelector('cv-form');
+  // LOOP nos INPUTS;
+  // for () {}
+    // PEGAR LABEL -> PRINTAR
+    //PEGAR VALUE -> PRINTAR
+
+}
+
+let btnSubmit = document.querySelector('#submit');
+btnSubmit.addEventListener('click', (event) => {
+  event.preventDefault();
+  // checkMail();
+  // checkDate();
+  if (dataValida && emailValido) {
+    criarDiv();
+  } else {
+    console.log('corrija seu form');
+  }
+});
 
