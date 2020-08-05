@@ -1,3 +1,17 @@
+const emailInput = document.querySelector('#email');
+const dataAtual = new Date();
+const ano = dataAtual.getFullYear();
+const mes = dataAtual.getMonth() + 1;
+const dia = dataAtual.getDate();
+const elementoDiv = document.createElement('div');
+const dataInicio = document.querySelector('#data-inicio');
+const resetBtn = document.querySelector('#reset');
+let selectEstado = document.querySelector('#estado');
+let btnSubmit = document.querySelector('#submit');
+let dataTeste = '';
+let dataTesteNumber = [];
+let dataValida = false;
+let emailValido = false;
 let estados = {
   AC: 'Acre',
   AL: 'Alagoas',
@@ -28,14 +42,11 @@ let estados = {
   TO: 'Tocantins',
 };
 
-let selectEstado = document.querySelector('#estado');
-let emailValido = false;
-
-for (const property in estados) {
+for (const estado in estados) {
   let option = document.createElement('option');
-  option.value = `${property}`;
-  option.id = `${property}`;
-  option.innerHTML = `${estados[property]}`;
+  option.value = `${estado}`;
+  option.id = `${estado}`;
+  option.innerHTML = `${estados[estado]}`;
   selectEstado.appendChild(option);
 }
 
@@ -51,18 +62,6 @@ function checkMail(event) {
     }
   }
 }
-
-const emailInput = document.querySelector('#email');
-emailInput.addEventListener('change', checkMail);
-
-const dataAtual = new Date();
-const ano = dataAtual.getFullYear();
-const mes = dataAtual.getMonth() + 1;
-const dia = dataAtual.getDate();
-const dataInicio = document.querySelector('#data-inicio');
-let dataTeste = '';
-let dataTesteNumber = [];
-let dataValida = false;
 
 function checkDate() {
   dataTeste = document.querySelector('#data-inicio').value.split('-');
@@ -84,21 +83,38 @@ function checkDate() {
   }
 }
 
-dataInicio.addEventListener('change',checkDate);
-
 function criarDiv() {
-  // Criar DIV
-  const elementoDiv = document.createElement('div');
+  // append DIV
   document.body.appendChild(elementoDiv);
-  const form = document.querySelector('cv-form');
+  elementoDiv.className = 'form-result';
+  const formInputs = document.querySelectorAll('#cv-form input');
   // LOOP nos INPUTS;
-  // for () {}
-    // PEGAR LABEL -> PRINTAR
-    //PEGAR VALUE -> PRINTAR
-
+  for( let i = 0; i < formInputs.length; i += 1) {
+    const elementP = document.createElement('p');
+    if(formInputs[i].type === 'radio') {
+      if(formInputs[i].checked) {
+      const casaRadio = document.querySelector('#cv-form input[ name="tipo-de-casa" ]:checked');    
+      elementP.innerHTML = `<b>Tipo de casa:</b> ${casaRadio.value}`;
+      elementoDiv.appendChild(elementP);
+      }
+    } else {
+      elementP.innerHTML = `<b>${formInputs[i].labels[0].innerText}:</b> ${formInputs[i].value}`;
+      elementoDiv.appendChild(elementP);
+    }
+  }
+  // for (const input in formInputs) {
+  //   const elementP = document.createElement('p');
+  //   elementP.innerHTML = `${formInputs[input]}`;
+  //   // elementP.innerHTML = `${formInputs[input].labels[0].innerText}: input.value`;
+  //   elementoDiv.appendChild(elementP);
 }
 
-let btnSubmit = document.querySelector('#submit');
+function limparDiv(event) {
+  elementoDiv.innerHTML = '';
+}
+
+emailInput.addEventListener('change', checkMail);
+dataInicio.addEventListener('change',checkDate);
 btnSubmit.addEventListener('click', (event) => {
   event.preventDefault();
   // checkMail();
@@ -109,4 +125,4 @@ btnSubmit.addEventListener('click', (event) => {
     console.log('corrija seu form');
   }
 });
-
+resetBtn.addEventListener('click', limparDiv);

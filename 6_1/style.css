@@ -34,7 +34,7 @@ html {
   margin: 4px auto 16px;
 }
 
-#cv-form select {
+#cv-form select, #cv-form input[ type='date' ] {
   margin: 4px 0 16px 16px;
 }
 
@@ -54,7 +54,7 @@ html {
   outline: none;
 }
 
-#cv-form input:not([ type='radio' ]) {
+#cv-form input:not([ type='radio' ]):not([ type='date' ]) {
   width: 90%;
 }
 
