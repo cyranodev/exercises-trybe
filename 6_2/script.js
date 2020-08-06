@@ -6,6 +6,8 @@ const dia = dataAtual.getDate();
 const elementoDiv = document.createElement('div');
 const dataInicio = document.querySelector('#data-inicio');
 const resetBtn = document.querySelector('#reset');
+const cpfInput = document.querySelector('#cpf');
+let divCreated = false;
 let selectEstado = document.querySelector('#estado');
 let btnSubmit = document.querySelector('#submit');
 let dataTeste = '';
@@ -13,6 +15,7 @@ let dataTesteNumber = [];
 let dataValida = false;
 let emailValido = false;
 let estados = {
+  '': '',
   AC: 'Acre',
   AL: 'Alagoas',
   AM: 'Amazonas',
@@ -49,6 +52,8 @@ for (const estado in estados) {
   option.innerHTML = `${estados[estado]}`;
   selectEstado.appendChild(option);
 }
+
+selectEstado.selectedIndex = 0;
 
 function checkMail(event) {
   if (event.target.value !== null) {
@@ -87,7 +92,7 @@ function criarDiv() {
   // append DIV
   document.body.appendChild(elementoDiv);
   elementoDiv.className = 'form-result';
-  const formInputs = document.querySelectorAll('#cv-form input');
+  const formInputs = document.querySelectorAll('#cv-form input, #cv-form select, #cv-form textarea');
   // LOOP nos INPUTS;
   for( let i = 0; i < formInputs.length; i += 1) {
     const elementP = document.createElement('p');
@@ -107,22 +112,124 @@ function criarDiv() {
   //   elementP.innerHTML = `${formInputs[input]}`;
   //   // elementP.innerHTML = `${formInputs[input].labels[0].innerText}: input.value`;
   //   elementoDiv.appendChild(elementP);
+  divCreated = true;
 }
 
 function limparDiv(event) {
-  elementoDiv.innerHTML = '';
+  if(divCreated) {
+    elementoDiv.remove();
+    divCreated = false;
+  }
 }
 
-emailInput.addEventListener('change', checkMail);
-dataInicio.addEventListener('change',checkDate);
-btnSubmit.addEventListener('click', (event) => {
-  event.preventDefault();
-  // checkMail();
-  // checkDate();
-  if (dataValida && emailValido) {
-    criarDiv();
-  } else {
-    console.log('corrija seu form');
-  }
-});
+// emailInput.addEventListener('change', checkMail);
+// dataInicio.addEventListener('change',checkDate);
+// btnSubmit.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   // checkMail();
+//   // checkDate();
+//   if (dataValida && emailValido) {
+//     criarDiv();
+//   } else {
+//     console.log('corrija seu form');
+//   }
+// });
+
 resetBtn.addEventListener('click', limparDiv);
+
+
+window.onload = () => {
+  new window.JustValidate('.js-form', {
+    rules: {
+      address: {
+        required: true,
+        maxLength: 200,
+      },
+      city: {
+        required: true,
+        maxLength: 28,
+      },
+      date: {
+        required: true,
+      },
+      desc_cargo: {
+        required: true,
+        maxLength: 500,
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+      name: {
+        required: true,
+        maxLength: 40,
+      },
+      number: {
+        required: true,
+      },
+      radio: {
+        required: true
+      },
+      select: {
+        function: (select, value) => {
+          if(value !== '') {
+            return true;
+          }
+        }
+      },
+      text: {
+        required: true,
+        maxLength: 40,
+      },
+      textarea: {
+        required: true,
+      },
+    },
+    messages: {
+      address: {
+        required: 'Favor preencher seu endereço.'
+      },
+      city: {
+        required: 'Favor preencher sua cidade.'
+      },
+      date: {
+        required: 'Favor preencher a data.'
+      },
+      desc_cargo: {
+        required: 'Digite a descrição do cargo.'
+      },
+      email: {
+        required: 'Digite um e-mail.',
+        email: 'Digite um e-mail válido.',
+      },
+      name: {
+        required: 'Favor preencher seu nome.'
+      },
+      number: {
+        required: 'Favor preencher seu CPF.'
+      },
+      radio: {
+        required: 'Escolha um tipo de casa.',
+      },
+      select: {
+        function: 'Selecione seu estado.',
+      },
+      text: {
+        required: 'Favor preencher a informação.',
+      },
+      textarea: {
+        required: 'Descreva seu último trabalho.',
+      },
+    },
+
+    focusWrongField: true,
+
+    submitHandler: function (form, values) {
+        criarDiv();
+    },
+    
+    invalidFormCallback: function (errors) {
+        console.log(errors);
+    },
+  });
+}

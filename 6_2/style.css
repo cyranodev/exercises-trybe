@@ -4,6 +4,10 @@ html {
   font-size: 16px;
 }
 
+body {
+  padding: 40px;
+}
+
 #cv-form {
   margin: 0 auto;
   width: 70%;
@@ -12,14 +16,21 @@ html {
 #cv-form label {
   display: block;
   font-weight: 700;
-  margin: 0  4px 0 23px;
+  margin: 15px  4px 0 23px;
+}
+
+.js-validate-error-label {
+  font-size: 0.9em;
+  font-style: italic;
+  margin: 0 auto 16px;
+  width: 88%;
 }
 
 #cv-form fieldset {
   border: 1px solid grey;
   border-radius: 8px;
-  padding: 30px 30px;
   margin: 0 0 30px 0;
+  padding: 30px 30px;
 }
 
 #cv-form input, #cv-form select, #cv-form textarea {
@@ -31,11 +42,11 @@ html {
 }
 
 #cv-form input {
-  margin: 4px auto 16px;
+  margin: 4px auto 4px;
 }
 
-#cv-form select, #cv-form input[ type='date' ] {
-  margin: 4px 0 16px 16px;
+#cv-form select, #cv-form input[ type='date' ], #cv-form input[ type="number" ], #cv-form textarea {
+  margin: 4px 0 2px 5%;
 }
 
 #cv-form input[ type='radio' ] {
@@ -49,12 +60,12 @@ html {
   margin: 0 0 0 3px;
 }
 
-#cv-form input:focus, #cv-form select:focus {
+#cv-form input:focus, #cv-form myselect:focus {
   background-color: rgb(180, 190, 210);
   outline: none;
 }
 
-#cv-form input:not([ type='radio' ]):not([ type='date' ]) {
+#cv-form input:not([ type='radio' ]):not([ type='date' ]):not([ type="number" ]) {
   width: 90%;
 }
 
@@ -66,11 +77,23 @@ html {
   text-transform: uppercase;
 }
 
-#cv-form textarea {
-  margin: 4px 0 16px 21px;
-}
-
 #cv-form textarea:focus {
   background-color: rgb(180, 190, 210);
   outline: none;
+}
+
+.form-result {
+  background-color: rgb(223, 228, 236);
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin: 20px auto 30px;
+  padding: 30px 30px;
+  width: 80%;
+}
+
+.form-result p {
+  background-color: rgb(241, 247, 255);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 15px 18px;
 }
