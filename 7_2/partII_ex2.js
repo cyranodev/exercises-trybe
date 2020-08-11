@@ -55,3 +55,10 @@ const totalEstudantes = (obj) => {
 };
 
 totalEstudantes(allLessons);
+
+function getValueByNumber (obj, index) {
+  const value = Object.values(obj)[index];
+  return value;
+}
+
+console.log(getValueByNumber(lesson1, 2));
