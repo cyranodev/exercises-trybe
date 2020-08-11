@@ -46,3 +46,12 @@ showValues(lesson1);
 const allLessons = {};
 Object.assign(allLessons, {lesson1}, {lesson2}, {lesson3});
 console.log(allLessons);
+
+const totalEstudantes = (obj) => {
+  let total = obj['lesson1']['numeroEstudantes'] + obj['lesson2']['numeroEstudantes'] + obj['lesson3']['numeroEstudantes'];
+  console.log(`
+  Total de estudantes: ${total}.
+  `);
+};
+
+totalEstudantes(allLessons);
