@@ -36,6 +36,13 @@ function objLength (obj) {
 }
 
 objLength(lesson1);
-objLength(lesson2);
-objLength(lesson3);
 
+function showValues (obj) {
+  console.log(Object.values(obj));
+}
+
+showValues(lesson1);
+
+const allLessons = {};
+Object.assign(allLessons, {lesson1}, {lesson2}, {lesson3});
+console.log(allLessons);
