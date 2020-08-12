@@ -102,11 +102,6 @@ function criarDiv() {
       elementoDiv.appendChild(elementP);
     }
   }
-  // for (const input in formInputs) {
-  //   const elementP = document.createElement('p');
-  //   elementP.innerHTML = `${formInputs[input]}`;
-  //   // elementP.innerHTML = `${formInputs[input].labels[0].innerText}: input.value`;
-  //   elementoDiv.appendChild(elementP);
 }
 
 function limparDiv(event) {
