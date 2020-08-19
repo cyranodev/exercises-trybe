@@ -73,9 +73,7 @@ const estudantes = [
   },
 ];
 
-const getBestClass = (bestClass, curr) => (
-  (curr.nota > bestClass.nota) ? curr : bestClass
-);
+const getBestClass = (bestClass, curr) => (curr.nota > bestClass.nota) ? curr : bestClass;
 
 const studentArray = array => {
     return array.map(student => {
