@@ -85,3 +85,8 @@ const studentArray = array => {
 };
 
 console.log(studentArray(estudantes));
+const myArray = [ 1, 2 ];
+const aaa = () => 10;
+const sumIt = (acc, val) => acc + val;
+const reduce = (array) => array.reduce(sumIt, aaa());
+console.log(reduce(myArray));
