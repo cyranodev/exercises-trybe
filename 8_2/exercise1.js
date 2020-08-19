@@ -78,7 +78,7 @@ function formatedBookNames() {
   books.map(book => {
     array.push(`${book.name} - ${book.genre} - ${book.author.name}`)
   })
-  return array;
+  return array
 }
 
 assert.deepEqual(formatedBookNames(), expected_result);
