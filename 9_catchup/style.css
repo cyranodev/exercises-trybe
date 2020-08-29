@@ -1,0 +1,67 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('./assets/layout_facebook_150421_1-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#currency-list {
+  text-align: center;
+  list-style-type: none;
+  background: white;
+  padding: 0;
+  width: 300px;
+}
+
+li {
+  padding: 10px 0;
+  text-align: center;
+}
+
+li:nth-child(even) {
+  background: yellow;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+}
+
+.main-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  text-align: center;
+}
+
+.main-section label {
+  background-color: #65d9fe;
+}
+
+.main-section input {
+  background-color: rgb(250, 250, 250);
+  border: none;
+  border-radius: 3px;
+  height: 40px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.main-section button {
+  background-color: rgb(255, 255, 15);
+  border: none;
+  border-radius: 8px;
+  font-weight: 800;
+  height: 30px;
+  margin: 0 0 4px 0;
+}
+
+.main-section button.red {
+  background-color: rgb(240, 76, 64);
+  color: snow;
+}
