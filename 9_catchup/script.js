@@ -28,7 +28,7 @@ const handleSearchEvent = () => {
   if (currencyValue === '') {
     renderEmptyAlert()
   } else {
-    clearList('leaveInputAlone');
+    clearList('leaveInput');
     fetchCurrency(currencyValue);
   }
 }
@@ -40,7 +40,7 @@ const renderEmptyAlert = () => {
 const clearList = (param) => {
   const currencyList = document.querySelector('#currency-list');
   currencyList.innerHTML = '';
-  if (param !== 'leaveInputAlone') {
+  if (param !== 'leaveInput') {
     const inputText = document.querySelector('#currency-input');
     inputText.value = '';
   }
@@ -70,7 +70,7 @@ const handleError = (errorMessage) => {
 }
 
 const handleRates = (rates) => {
-  const ratesKeys = Object.keys(rates);
+  const ratesKeys = Object.keys(rates).sort();
   
   ratesKeys.forEach((key) => {
     const value = rates[key];

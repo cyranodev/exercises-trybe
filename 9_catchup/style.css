@@ -19,11 +19,17 @@ body {
 
 li {
   padding: 10px 0;
-  text-align: center;
+  text-align: left;
+  padding-left: 30%;
 }
 
 li:nth-child(even) {
   background: yellow;
+}
+
+.main-section li img {
+  float: left;
+  padding: 0 15px 0 0;
 }
 
 .header {
@@ -35,12 +41,12 @@ li:nth-child(even) {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  font-weight: 800;
   text-align: center;
 }
 
 .main-section label {
   background-color: #65d9fe;
+  font-weight: 700;
 }
 
 .main-section input {
@@ -53,12 +59,14 @@ li:nth-child(even) {
 }
 
 .main-section button {
+  align-self: center;
   background-color: rgb(255, 255, 15);
   border: none;
   border-radius: 8px;
   font-weight: 800;
-  height: 30px;
-  margin: 0 0 4px 0;
+  margin: 5px 3px;
+  padding: 12px;
+  width: 47%;
 }
 
 .main-section button.red {
