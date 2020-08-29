@@ -24,13 +24,19 @@ const setupEventHandlers = () => {
 
 const handleSearchEvent = () => {
   const currencyValue = document.querySelector('#currency-input').value.toUpperCase();
+  const number = parseInt(currencyValue.match(/(\d+)/));
+  const currency = currencyValue.substring(0, 3);
 
   if (currencyValue === '') {
     renderEmptyAlert()
+  } else if (number) {
+    clearList('leaveInput');
+    fetchCurrency(currency, number);
   } else {
     clearList('leaveInput');
-    fetchCurrency(currencyValue);
+    fetchCurrency(currency);
   }
+
 }
 
 const renderEmptyAlert = () => {
@@ -49,17 +55,16 @@ const clearList = (param) => {
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', clearList);
 
-const fetchCurrency = (currency) => {
+const fetchCurrency = (currency, number = 1) => {
   const endpoint = `${url}?base=${currency}`;
 
   fetch(endpoint)
     .then((response) => response.json())
     .then((object) => {
-      console.log(object);
       if (object.error) {
         throw new Error(object.error);
       } else {
-        handleRates(object.rates);
+        handleRates(object.rates, number);
       }
     })
     .catch((error) => handleError(error))
@@ -69,11 +74,11 @@ const handleError = (errorMessage) => {
   window.alert(errorMessage);
 }
 
-const handleRates = (rates) => {
+const handleRates = (rates, number) => {
   const ratesKeys = Object.keys(rates).sort();
   
   ratesKeys.forEach((key) => {
-    const value = rates[key];
+    const value = rates[key] * number;
     renderRate(key, value);
   })
 }
