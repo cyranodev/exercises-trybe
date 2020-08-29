@@ -20,24 +20,34 @@ const setupEventHandlers = () => {
       handleSearchEvent();
     }
   });
+
+  const filterText = document.querySelector('#currency-filter');
+  filterText.addEventListener('keyup', (event) => {
+    if (event.keyCode === 13) {
+      handleSearchEvent();
+    }
+  });
 }
 
 const handleSearchEvent = () => {
   const currencyValue = document.querySelector('#currency-input').value.toUpperCase();
   const number = parseInt(currencyValue.match(/(\d+)/));
   const currency = currencyValue.substring(0, 3);
+  const currencyFilter = document.querySelector('#currency-filter').value.toUpperCase();
 
   if (currencyValue === '') {
     renderEmptyAlert()
   } else if (number) {
     clearList('leaveInput');
-    fetchCurrency(currency, number);
+    fetchCurrency(currency, currencyFilter, number);
   } else {
     clearList('leaveInput');
-    fetchCurrency(currency);
+    fetchCurrency(currency, currencyFilter);
   }
 
 }
+
+
 
 const renderEmptyAlert = () => {
   window.alert('Por favor, insira alguma moeda!');
@@ -48,21 +58,42 @@ const clearList = (param) => {
   currencyList.innerHTML = '';
   if (param !== 'leaveInput') {
     const inputText = document.querySelector('#currency-input');
+    const inputFilter = document.querySelector('#currency-filter');
     inputText.value = '';
+    inputFilter.value = '';
   }
 }
 
 const resetButton = document.querySelector('#reset-button');
 resetButton.addEventListener('click', clearList);
 
-const fetchCurrency = (currency, number = 1) => {
-  const endpoint = `${url}?base=${currency}`;
+function handleBTC (object) {
+  const keys = Object.keys(object);
+  const result = {};
+  keys.forEach(key => {
+    result[key] = parseInt(object[key].rate);
+  });
+  return result;
+}
+
+const fetchCurrency = (currency, currencyFilter, number = 1) => {
+  let endpoint = '';
+  if (currency = 'BTC') {
+    endpoint = `https://api.coindesk.com/v1/bpi/currentprice.json`;
+  } else if (currencyFilter !== '') {
+    endpoint = `${url}?base=${currency}&symbols=${currencyFilter}`;
+  } else {
+    endpoint = `${url}?base=${currency}`;
+  }
 
   fetch(endpoint)
     .then((response) => response.json())
     .then((object) => {
       if (object.error) {
         throw new Error(object.error);
+      } else if (object.chartName) {
+        console.log(object.bpi);
+        handleRates(handleBTC(object.bpi), number)
       } else {
         handleRates(object.rates, number);
       }
