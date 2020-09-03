@@ -5,30 +5,37 @@ function sum(a, b) {
 
   return a + b;
 }
-describe('test sums', () => {
-  it('sums two values', () => {
-    expect(sum(2, 3)).toEqual(5);
-  });
-});
 
-test('checks type is function', () => {
+test('The function type is a function indeed', () => {
   expect(typeof sum).toBe('function');
 });
 
-test('should not accept strings', () => {
-  expect(() => {
-    sum(2, '3');
-  }).toThrow('parameters must be numbers');
+test('The function should sum two values', () => {
+  expect(sum(2, 3)).toEqual(5);
 });
 
-test('should not accept objects', () => {
-  expect(() => {
-    sum(2, {});
-  }).toThrow('parameters must be numbers');
-});
+describe('Tests if function strictly accepts numbers', () => {
+  it('should not accept strings', () => {
+    expect(() => {
+      sum(2, '3');
+    }).toThrow('parameters must be numbers');
+  });
 
-test('should not accept arrays', () => {
-  expect(() => {
-    sum(2, []);
-  }).toThrow('parameters must be numbers');
+  it('should not accept objects', () => {
+    expect(() => {
+      sum(2, {});
+    }).toThrow('parameters must be numbers');
+  });
+
+  it('should not accept arrays', () => {
+    expect(() => {
+      sum(2, []);
+    }).toThrow('parameters must be numbers');
+  });
+
+  it('should not receive null parameters', () => {
+    expect(() => {
+      sum(2);
+    }).toThrow('parameters must be numbers');
+  });
 });
