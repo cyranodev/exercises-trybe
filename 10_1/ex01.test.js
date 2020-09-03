@@ -1,5 +1,3 @@
-const { describe } = require("yargs");
-
 function sum(a, b) {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw new Error('parameters must be numbers');
@@ -7,9 +5,10 @@ function sum(a, b) {
 
   return a + b;
 }
-
-test('sums two values', () => {
-  expect(sum(2, 3)).toEqual(5);
+describe('test sums', () => {
+  it('sums two values', () => {
+    expect(sum(2, 3)).toEqual(5);
+  });
 });
 
 test('checks type is function', () => {
