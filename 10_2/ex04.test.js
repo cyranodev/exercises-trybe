@@ -8,7 +8,7 @@ const getRepos = (url) => {
     });
 }
 
-describe('Function getRepos - promises', () => {
+describe('Function getRepos -', () => {
   it('should return a list that contains certain names', async () => {
     const url = 'https://api.github.com/users/tryber/repos';
     const list = await getRepos(url);
