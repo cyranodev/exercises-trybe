@@ -12,7 +12,7 @@ describe('Function getRepos -', () => {
   it('should return a list that contains certain names', async () => {
     const url = 'https://api.github.com/users/tryber/repos';
     const list = await getRepos(url);
-    expect(list).toContain('sd-01-week4-5-project-todo-list');
-    expect(list).toContain('sd-01-week4-5-project-meme-generator');
+    expect(list).toContain('hacka-trybe');
+    expect(list).toContain('sd-00-block5-project-pixels-art');
   });
 });
