@@ -4,21 +4,34 @@ import Pokemon from './Pokemon';
 
 class Pokedex extends React.Component {
   render() {
-    <div className="pokedex-container">
-      {Data.map(pokemon => {
-        const { id, name, type, averageWeight: { avgWeight, weightMeasureUnit, moreInfo }, image } = pokemon;
+    return (
+      <div className="pokedex-container">
+      {Data.map(pokemon => (
         <Pokemon
-          key={id}
-          id={id}
-          name={name}
-          type={type}
-          avgWeight={avgWeight}
-          weightMeasure={weightMeasureUnit}
-          moreInfo={moreInfo} />;
-      }
-      )}
+          key={pokemon.id}
+          id={pokemon.id}
+          name={pokemon.name}
+          type={pokemon.type}
+          image={pokemon.image}
+          avgWeight={pokemon.averageWeight.value}
+          weightMeasure={pokemon.averageWeight.measurementUnit}
+          moreInfo={pokemon.moreInfo} />
+      ))}
     </div>
+    )
   }
 }
 
 export default Pokedex;
+
+// {
+//   id: 148,
+//   name: "Dragonair",
+//   type: 'Dragon',
+//   averageWeight: {
+//       value: 16.5,
+//       measurementUnit: "kg"
+//   },
+//   image: "https://cdn.bulbagarden.net/upload/2/2c/Spr_5b_148.png",
+//   moreInfo: "https://bulbapedia.bulbagarden.net/wiki/Dragonair_(Pok%C3%A9mon)"
+// }
