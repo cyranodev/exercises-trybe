@@ -1,10 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Pokemon extends React.Component {
   render() {
-    const { id, name, type, averageWeight: { avgWeight, weightMeasureUnit }, image } = this.props;
-
-
+    return (
+      <div id={id}>
+        <h2>{name}</h2>
+        <img className="pokemon-img" src={image} />
+        <h3>type: {type}</h3>
+        <h3>
+          Average weight: {avgWeight} {weightMeasure}
+        </h3>
+        <p>
+          Click for <a href={moreInfo}>more info</a>.
+        </p>
+      </div>
+    )
   }
 }
 
